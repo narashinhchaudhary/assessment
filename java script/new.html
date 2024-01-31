@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Booking Form</title>
+  <style>
+    body{
+       margin: 0;
+       padding: 0;
+  background-image: url('chad-montano-MqT0asuoIcU-unsplash.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+    justify-content: center;
+  
+    }
+   .container{
+    color: aqua;
+    background-color:transparent;
+    line-height: 30px;
+    margin-top: 200px;
+    text-shadow: 2px 2px  gray;
+   
+
+   }
+    
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+  <h2>Restaurant Booking Form</h2>
+  <form id="bookingForm">
+    <div>
+      <label for="bookingType">Choice of Booking:</label>
+      <select id="bookingType" onchange="handleBookingTypeChange()">
+        <option value="fullDay">Full day booking</option>
+        <option value="halfDay">Half day booking</option>
+        <option value="hourly">Hourly booking</option>
+      </select>
+    </div>
+    <div>
+      <label for="userName">User Name:</label>
+      <input type="text" id="userName">
+    </div>
+    <div>
+      <label for="mobileNumber">Mobile Number:</label>
+      <input type="text" id="mobileNumber">
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email">
+    </div>
+    <div>
+      <label for="noOfPerson">No of Person:</label>
+      <input type="number" id="noOfPerson" min="1">
+    </div>
+    <div id="dateContainer">
+      <label for="date">Date:</label>
+      <input type="date" id="date">
+    </div>
+    <div id="timeContainer" style="display: none;">
+      <label for="time">Time:</label>
+      <input type="time" id="time">
+    </div>
+    <div id="slotContainer" style="display: none;">
+      <label for="slot">Slot:</label>
+      <select id="slot">
+        <option value="breakfast">Breakfast</option>
+        <option value="lunch">Lunch</option>
+        <option value="dinner">Dinner</option>
+      </select>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+  <script>
+    function handleBookingTypeChange() {
+      const bookingType = document.getElementById('bookingType').value;
+      const dateContainer = document.getElementById('dateContainer');
+      const timeContainer = document.getElementById('timeContainer');
+      const slotContainer = document.getElementById('slotContainer');
+
+      dateContainer.style.display = 'block';
+      timeContainer.style.display = 'none';
+      slotContainer.style.display = 'none';
+
+      if (bookingType === 'halfDay') {
+        slotContainer.style.display = 'block';
+      } else if (bookingType === 'hourly') {
+        timeContainer.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
